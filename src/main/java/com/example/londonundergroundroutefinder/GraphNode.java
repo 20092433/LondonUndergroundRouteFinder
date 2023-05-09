@@ -9,6 +9,7 @@ public class GraphNode<T> {
 
     public List<GraphNode<T>> adjlist = new ArrayList<>();
 
+
     public GraphNode(T data) {
         this.data=data;
     }

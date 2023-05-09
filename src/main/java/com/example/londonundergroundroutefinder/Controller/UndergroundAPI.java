@@ -1,5 +1,6 @@
 package com.example.londonundergroundroutefinder.Controller;
 
+import com.example.londonundergroundroutefinder.CostedPath;
 import com.example.londonundergroundroutefinder.GraphNode;
 import com.example.londonundergroundroutefinder.SearchGraph;
 import com.example.londonundergroundroutefinder.Station;
@@ -15,6 +16,8 @@ import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static com.example.londonundergroundroutefinder.CostedPath.findCheapestPathDijkstra;
 
 public class UndergroundAPI implements Initializable {
 
@@ -62,6 +65,7 @@ public class UndergroundAPI implements Initializable {
 
 
 
+        //hello hope this updated
 
 
 
@@ -71,6 +75,27 @@ public class UndergroundAPI implements Initializable {
 //        }
 
 
+    }
+
+
+    public void routeViewCheapest(){
+        String srcc = stationBox.getSelectionModel().getSelectedItem().toString();
+        GraphNode<Station> srcnode = findGraphNodeByName(srcc);
+        String destt = destBox.getSelectionModel().getSelectedItem().toString();
+        Station destStation = ((Station)findGraphNodeByName(destt).data);
+
+        routeView.clear();
+        String DA =("The cheapest path from" + srcnode.data.getStationName() + "\n" +
+                        "to" + destStation.getStationName() + "using Dijkstra's algorithm:");
+        //System.out.println("using Dijkstra's algorithm:");
+        //System.out.println("-------------------------------------");
+        String thePathh = "";
+        CostedPath cpa=findCheapestPathDijkstra(srcnode,destStation);
+        for(GraphNode<?> n : cpa.pathList) {
+            System.out.println(n.data);
+            thePathh += ((Station) n.data).getStationName() + "\n";
+        }
+        routeView.setText(DA + "\nThe total path cost is: "+ cpa.pathCost + "the path you need to take is " + thePathh);
     }
 
 
@@ -107,6 +132,18 @@ public class UndergroundAPI implements Initializable {
 
 
     }
+
+//    public void cheapestPathConnection(){
+//        System.out.println("The cheapest path from Silver to Gold");
+//        System.out.println("using Dijkstra's algorithm:");
+//        System.out.println("-------------------------------------");
+//        CostedPath cpa=findCheapestPathDijkstra(n,"Gold");
+//        for(GraphNode<?> n : cpa.pathList)
+//            System.out.println(n.data);
+//        System.out.println("\nThe total path cost is: "+cpa.pathCost);
+//    }
+
+
 
 
 

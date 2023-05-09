@@ -2,5 +2,6 @@ package com.example.londonundergroundroutefinder;
 
 public class GraphLink {
 public GraphNode<?> destNode;
-int line_num;
+    public int cost;
+    int line_num;
 }
