@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="1254.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.londonundergroundroutefinder.Controller.UndergroundAPI">
+  <tabs>
+    <Tab text="Route Finder">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="439.0" prefWidth="664.0">
+               <children>
+                  <ImageView fx:id="mapView" fitHeight="570.0" fitWidth="1000.0" layoutX="12.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/London_Underground_Zone_1_Highlighted.png" />
+                     </image></ImageView>
+                  <ComboBox fx:id="stationBox" layoutX="1050.0" layoutY="101.0" prefWidth="150.0" promptText="Start" />
+                  <ComboBox fx:id="destBox" layoutX="1050.0" layoutY="151.0" prefWidth="150.0" promptText="Destination" />
+                  <TextArea fx:id="routeView" layoutX="1031.0" layoutY="508.0" prefHeight="165.0" prefWidth="206.0" />
+                   <Button layoutX="1100.0" layoutY="317.0" mnemonicParsing="false" onAction="#populateTextView" text="Find Route" />
+                  <Button layoutX="1075.0" layoutY="386.0" mnemonicParsing="false" onAction="#routeViewCheapest" prefHeight="26.0" prefWidth="123.0" text="Shortest Route" />
+                  <Text layoutX="1080.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Stations">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Separator layoutX="1011.0" layoutY="235.0" prefHeight="0.0" prefWidth="251.0" />
+                  <Text layoutX="1084.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Dijkstra’s algorithm" />
+                  <Text layoutX="1094.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Depth-First Search" />
+                  <Text layoutX="1100.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Algorithms">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="456.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="London Underground Route Finder">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="removeLinesButton" layoutX="1089.0" layoutY="446.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="96.0" text="Reset Lines" />
+
+               </children></AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>
